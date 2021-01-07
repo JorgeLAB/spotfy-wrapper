@@ -1,1 +1,1 @@
-# spotfy-wrapper
+# spotify-wrapper
