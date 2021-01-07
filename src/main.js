@@ -1,7 +1,7 @@
-const valor_passado = 9;
+const valor_novo = 4;
 
-function teste(param) {
+function test(param) {
   return param * 8;
 }
 
-teste(valor_passado);
+test(valor_novo);
