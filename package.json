@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "lint": "./node_modules/.bin/eslint src/*.js",
-    "test": "",
+    "test:tdd": "./node_modules/mocha/bin/mocha ./tests/**/*.spec.js",
+    "test:coverage": "nyc npm run test",
     "start": "webpack serve --mode development"
   },
   "husky": {
@@ -34,10 +35,6 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "babel-loader": "^8.2.2",
-    "lodash": "^4.17.20",
-    "webpack": "^5.12.1",
-    "webpack-cli": "^4.3.1",
-    "webpack-dev-server": "^3.11.1",
     "chai": "^4.2.0",
     "eslint": "^7.17.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -45,8 +42,13 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.1",
     "husky": "^5.0.6",
+    "lodash": "^4.17.20",
     "mocha": "^8.2.1",
-    "prettier": "^2.2.1"
+    "nyc": "^15.1.0",
+    "prettier": "^2.2.1",
+    "webpack": "^5.12.1",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1"
   },
   "dependencies": {
     "regenerator-runtime": "^0.13.7",
