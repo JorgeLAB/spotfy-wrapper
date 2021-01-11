@@ -2,13 +2,14 @@
   "name": "spotfy-wrapper",
   "version": "1.0.0",
   "description": "lib for search information with api spotify",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "lint": "./node_modules/.bin/eslint src/*.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "",
+    "start": "webpack serve --mode development"
   },
-  "husky":{
-    "hooks":{
+  "husky": {
+    "hooks": {
       "pre-push": "npm run lint"
     }
   },
@@ -30,9 +31,13 @@
   },
   "homepage": "https://github.com/JorgeLAB/spotfy-wrapper#readme",
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
+    "lodash": "^4.17.20",
+    "webpack": "^5.12.1",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1",
     "chai": "^4.2.0",
     "eslint": "^7.17.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -42,5 +47,9 @@
     "husky": "^5.0.6",
     "mocha": "^8.2.1",
     "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "regenerator-runtime": "^0.13.7",
+    "core-js": "^3.8.2"
   }
 }
