@@ -35,23 +35,36 @@ describe('Search Wrapper', () => {
 
   describe('Generic Search', () => {
 
-    it('should call fetch function', () => {
-      const fetchedStub = sinon.stub(global, 'fetch');
-      const artists = search();
+    let fetchedStub = "";
 
-      expect(fetchedStub).to.have.been.calledOnce;
+    beforeEach(() => {
+      fetchedStub = sinon.stub(global, 'fetch');
+    });
+
+    afterEach(() => {
       fetchedStub.restore();
     });
 
+
+    it('should call fetch function', () => {
+      const artists = search();
+      expect(fetchedStub).to.have.been.calledOnce;
+    });
+
     it('should receive the currect url to fetch', () => {
-      const fetchedStub = sinon.stub(global, 'fetch');
+      context('should to pass one type', () => {
+        const artists = search('Smith','artist');
+        expect(fetchedStub).to.have.been.calledWith("https://api.spotify.com/v1/search?q=Smith&type=artist");
 
-      const artists = search('Smith', 'artist');
-      expect(fetchedStub).to.have.been.calledWith("https://api.spotify.com/v1/search?q=Smith&type=artist");
+        const albuns = search('Smith','album');
+        expect(fetchedStub).to.have.been.calledWith("https://api.spotify.com/v1/search?q=Smith&type=album");
+      });
 
-      const albuns = search('Smith', 'album');
-      expect(fetchedStub).to.have.been.calledWith("https://api.spotify.com/v1/search?q=Smith&type=album");
+      context('should to pass more than one type', () => {
+        const albunsAndArtists = search('Smith', [ "album", "artist" ]);
+        expect(fetchedStub).to.have.been.calledWith("https://api.spotify.com/v1/search?q=Smith&type=album,artist");
+      });
+
     })
-
   });
 })
